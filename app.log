@@ -1,0 +1,100 @@
+2025-02-18 11:56:04,054 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-18 11:56:04,055 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-18 11:56:04,056 - INFO -  * Restarting with stat
+2025-02-18 11:56:04,753 - WARNING -  * Debugger is active!
+2025-02-18 11:56:04,758 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 11:56:19,266 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:19] "[35m[1mGET /logs HTTP/1.1[0m" 500 -
+2025-02-18 11:56:19,694 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:19] "GET /logs?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-02-18 11:56:19,704 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:19] "GET /logs?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-02-18 11:56:19,771 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:19] "GET /logs?__debugger__=yes&cmd=resource&f=console.png&s=qxziapXZcvjFpW40Ei4U HTTP/1.1" 200 -
+2025-02-18 11:56:19,889 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:19] "GET /logs?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-02-18 11:56:23,328 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:23] "[35m[1mGET /logs HTTP/1.1[0m" 500 -
+2025-02-18 11:56:23,348 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:23] "[36mGET /logs?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-18 11:56:23,350 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:23] "[36mGET /logs?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-18 11:56:23,389 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:23] "[36mGET /logs?__debugger__=yes&cmd=resource&f=console.png&s=qxziapXZcvjFpW40Ei4U HTTP/1.1[0m" 304 -
+2025-02-18 11:56:23,486 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:23] "[36mGET /logs?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-18 11:56:34,881 - INFO - 127.0.0.1 - - [18/Feb/2025 11:56:34] "GET /logs?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-02-18 11:58:37,909 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-18 11:58:37,910 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-18 11:58:37,911 - INFO -  * Restarting with stat
+2025-02-18 11:58:38,555 - WARNING -  * Debugger is active!
+2025-02-18 11:58:38,558 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 11:59:19,969 - INFO - 127.0.0.1 - - [18/Feb/2025 11:59:19] "[35m[1mGET /logs HTTP/1.1[0m" 500 -
+2025-02-18 11:59:20,252 - INFO - 127.0.0.1 - - [18/Feb/2025 11:59:20] "[36mGET /logs?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-18 11:59:20,257 - INFO - 127.0.0.1 - - [18/Feb/2025 11:59:20] "[36mGET /logs?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-18 11:59:20,301 - INFO - 127.0.0.1 - - [18/Feb/2025 11:59:20] "GET /logs?__debugger__=yes&cmd=resource&f=console.png&s=ldm8OImjeSnrl3yW1Ffp HTTP/1.1" 200 -
+2025-02-18 11:59:20,377 - INFO - 127.0.0.1 - - [18/Feb/2025 11:59:20] "[36mGET /logs?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-18 11:59:28,156 - INFO - 127.0.0.1 - - [18/Feb/2025 11:59:28] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-18 11:59:30,554 - INFO - 127.0.0.1 - - [18/Feb/2025 11:59:30] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-18 12:15:29,938 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-18 12:15:29,939 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-18 12:15:29,941 - INFO -  * Restarting with stat
+2025-02-18 12:15:30,531 - WARNING -  * Debugger is active!
+2025-02-18 12:15:30,534 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 12:17:06,663 - INFO -  * Detected change in 'C:\\Users\\aurodier\\Capgemini\\NCY-CD76 - Documents\\flipbook_sharepoint\\app.py', reloading
+2025-02-18 12:17:06,735 - INFO -  * Restarting with stat
+2025-02-18 12:17:07,251 - WARNING -  * Debugger is active!
+2025-02-18 12:17:07,254 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 12:17:08,777 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-18 12:17:08,777 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-18 12:17:08,779 - INFO -  * Restarting with stat
+2025-02-18 12:17:09,279 - WARNING -  * Debugger is active!
+2025-02-18 12:17:09,282 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 12:17:20,246 - INFO - 127.0.0.1 - - [18/Feb/2025 12:17:20] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-02-18 12:17:20,530 - INFO - 127.0.0.1 - - [18/Feb/2025 12:17:20] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-02-18 12:17:20,539 - INFO - 127.0.0.1 - - [18/Feb/2025 12:17:20] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-02-18 12:17:20,631 - INFO - 127.0.0.1 - - [18/Feb/2025 12:17:20] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=AxrXXwOnbUl3JZNglPH3 HTTP/1.1" 200 -
+2025-02-18 12:17:20,675 - INFO - 127.0.0.1 - - [18/Feb/2025 12:17:20] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-02-18 12:17:34,838 - INFO - 127.0.0.1 - - [18/Feb/2025 12:17:34] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-02-18 13:29:21,225 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-18 13:29:21,225 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-18 13:29:21,228 - INFO -  * Restarting with stat
+2025-02-18 13:29:21,750 - WARNING -  * Debugger is active!
+2025-02-18 13:29:21,754 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 13:29:26,991 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-18 13:29:26,992 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-18 13:29:26,993 - INFO -  * Restarting with stat
+2025-02-18 13:29:27,523 - WARNING -  * Debugger is active!
+2025-02-18 13:29:27,527 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 13:29:38,326 - INFO - 127.0.0.1 - - [18/Feb/2025 13:29:38] "GET / HTTP/1.1" 200 -
+2025-02-18 13:29:40,999 - INFO - 127.0.0.1 - - [18/Feb/2025 13:29:40] "GET /config HTTP/1.1" 200 -
+2025-02-18 13:29:42,272 - INFO - 127.0.0.1 - - [18/Feb/2025 13:29:42] "GET /convert HTTP/1.1" 200 -
+2025-02-18 13:29:43,118 - INFO - 127.0.0.1 - - [18/Feb/2025 13:29:43] "GET /history HTTP/1.1" 200 -
+2025-02-18 13:29:43,876 - INFO - 127.0.0.1 - - [18/Feb/2025 13:29:43] "GET /logs HTTP/1.1" 200 -
+2025-02-18 13:29:58,741 - INFO - 127.0.0.1 - - [18/Feb/2025 13:29:58] "GET / HTTP/1.1" 200 -
+2025-02-18 13:32:59,499 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-18 13:32:59,500 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-18 13:32:59,502 - INFO -  * Restarting with stat
+2025-02-18 13:33:00,229 - WARNING -  * Debugger is active!
+2025-02-18 13:33:00,233 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 13:33:07,036 - INFO - 127.0.0.1 - - [18/Feb/2025 13:33:07] "GET / HTTP/1.1" 200 -
+2025-02-18 13:33:11,256 - INFO - 127.0.0.1 - - [18/Feb/2025 13:33:11] "GET /config HTTP/1.1" 200 -
+2025-02-18 13:33:12,729 - INFO - 127.0.0.1 - - [18/Feb/2025 13:33:12] "GET /convert HTTP/1.1" 200 -
+2025-02-18 13:33:33,419 - INFO - 127.0.0.1 - - [18/Feb/2025 13:33:33] "[32mPOST /convert HTTP/1.1[0m" 302 -
+2025-02-18 13:33:33,424 - INFO - 127.0.0.1 - - [18/Feb/2025 13:33:33] "GET /convert HTTP/1.1" 200 -
+2025-02-18 13:33:41,748 - INFO - 127.0.0.1 - - [18/Feb/2025 13:33:41] "[32mPOST /convert HTTP/1.1[0m" 302 -
+2025-02-18 13:33:41,753 - INFO - 127.0.0.1 - - [18/Feb/2025 13:33:41] "GET /convert HTTP/1.1" 200 -
+2025-02-18 13:33:57,074 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-18 13:33:57,074 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-18 13:33:57,076 - INFO -  * Restarting with stat
+2025-02-18 13:33:57,601 - WARNING -  * Debugger is active!
+2025-02-18 13:33:57,606 - INFO -  * Debugger PIN: 849-868-450
+2025-02-18 13:34:04,195 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:04] "GET /convert HTTP/1.1" 200 -
+2025-02-18 13:34:04,199 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:04] "GET /history HTTP/1.1" 200 -
+2025-02-18 13:34:05,212 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:05] "GET /logs HTTP/1.1" 200 -
+2025-02-18 13:34:14,407 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:14] "GET /config HTTP/1.1" 200 -
+2025-02-18 13:34:18,775 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:18] "GET /config HTTP/1.1" 200 -
+2025-02-18 13:34:19,603 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:19] "GET /convert HTTP/1.1" 200 -
+2025-02-18 13:34:26,472 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:26] "[32mPOST /convert HTTP/1.1[0m" 302 -
+2025-02-18 13:34:26,477 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:26] "GET /convert HTTP/1.1" 200 -
+2025-02-18 13:34:28,485 - INFO - 127.0.0.1 - - [18/Feb/2025 13:34:28] "GET /logs HTTP/1.1" 200 -
+2025-02-18 13:45:22,433 - INFO -  * Detected change in 'C:\\Users\\aurodier\\Capgemini\\NCY-CD76 - Documents\\flipbook_sharepoint\\app.py', reloading
+2025-02-18 13:45:22,517 - INFO -  * Restarting with stat
