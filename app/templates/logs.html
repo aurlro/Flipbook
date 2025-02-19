@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Logs</h2>
+{% if logs %}
+  <pre style="background-color:#f8f9fa; padding: 10px;">
+{% for line in logs %}{{ line }}
+{% endfor %}
+  </pre>
+{% else %}
+  <p>Aucun log disponible.</p>
+{% endif %}
+{% endblock %}

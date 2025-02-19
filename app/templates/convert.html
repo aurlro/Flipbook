@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Convertir un PDF en Flipbook</h2>
+<form method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="pdf_file" class="form-label">Sélectionnez un fichier PDF</label>
+    <input type="file" class="form-control" id="pdf_file" name="pdf_file" accept=".pdf">
+  </div>
+  <button type="submit" class="btn btn-success">Convertir</button>
+</form>
+{% endblock %}

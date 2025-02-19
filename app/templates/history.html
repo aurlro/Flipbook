@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Historique des conversions</h2>
+{% if history %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom du PDF</th>
+        <th>Date de conversion</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in history|reverse %}
+      <tr>
+        <td>{{ entry.pdf_name }}</td>
+        <td>{{ entry.date }}</td>
+        <td>
+          <a href="{{ url_for('serve_flipbook', folder=entry.converted_folder) }}" target="_blank" class="btn btn-primary btn-sm">Voir Flipbook</a>
+          <button class="btn btn-secondary btn-sm" onclick="copyEmbedCode('embed_{{ loop.index }}')">Copier en embed</button>
+          <pre id="embed_{{ loop.index }}" style="display:none;">{{ entry.embed_code }}</pre>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Aucune conversion effectuée pour le moment.</p>
+{% endif %}
+{% endblock %}

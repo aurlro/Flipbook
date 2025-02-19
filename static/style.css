@@ -1,0 +1,236 @@
+/* Variables CSS pour une personnalisation facile */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Styles de base */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover:after {
+    width: 80%;
+}
+
+/* Conteneurs */
+.container {
+    padding: 2rem 1rem;
+}
+
+/* Cartes et boîtes */
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Formulaires */
+.form-control {
+    border-radius: var(--border-radius);
+    border: 2px solid #e9ecef;
+    padding: 0.75rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: none;
+}
+
+/* Boutons */
+.btn {
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1.5rem;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Upload section */
+#upload-section {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+}
+
+#pdf-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Flipbook container */
+#flipbook-container {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    min-height: 400px;
+}
+
+/* Alertes */
+.alert {
+    border-radius: var(--border-radius);
+    border: none;
+    box-shadow: var(--box-shadow);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    #upload-section,
+    #flipbook-container {
+        padding: 1rem;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Tables */
+.table {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Logs styling */
+.log-entry {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius);
+    background: white;
+}
+
+.log-entry.error {
+    border-left: 4px solid var(--accent-color);
+}
+
+.log-entry.success {
+    border-left: 4px solid #2ecc71;
+}
+
+.log-entry.warning {
+    border-left: 4px solid #f1c40f;
+}
+
+/* Utilities */
+.text-muted {
+    color: #95a5a6 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Loading spinner */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center">
+        <h1>Bienvenue sur Flipbook Generator</h1>
+        <p>Utilisez la navigation ci-dessus pour configurer l'application, convertir des PDF, consulter l'historique et les logs.</p>
+    </div>
+    
+    <div id="upload-section">
+        <form id="pdf-upload-form">
+            <input type="file" id="pdf-file" accept=".pdf">
+            <button type="submit">Generate Flipbook</button>
+        </form>
+    </div>
+    
+    <div id="flipbook-container">
+        <!-- Le flipbook sera chargé ici -->
+    </div>
+</div>
+{% endblock %}
