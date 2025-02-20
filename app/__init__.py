@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Blueprint
 import os
 
 def create_app(config_name='default'):
@@ -29,7 +29,13 @@ def create_app(config_name='default'):
         os.makedirs('upload', exist_ok=True)
     
     # Enregistrement des blueprints
-    from app.routes.main import main as main_blueprint
+    from .routes.main import main as main_blueprint # type: ignore
     app.register_blueprint(main_blueprint)
     
     return app
+
+main = Blueprint('main', __name__)
+
+@main.route('/')
+def index():
+    return "Hello, World!"

@@ -1,4 +1,4 @@
-import os
+# filepath: /c:/Users/aurodier/Github/Flipbook/tests/conftest.py
 import pytest
 from app import create_app
 from urllib.parse import quote as url_quote
