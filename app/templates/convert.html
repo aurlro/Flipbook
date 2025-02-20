@@ -1,11 +1,22 @@
 {% extends "base.html" %}
+
+{% block title %}Conversion - Flipbook{% endblock %}
+
 {% block content %}
-<h2>Convertir un PDF en Flipbook</h2>
-<form method="post" enctype="multipart/form-data">
-  <div class="mb-3">
-    <label for="pdf_file" class="form-label">Sélectionnez un fichier PDF</label>
-    <input type="file" class="form-control" id="pdf_file" name="pdf_file" accept=".pdf">
-  </div>
-  <button type="submit" class="btn btn-success">Convertir</button>
-</form>
+<div class="card">
+    <div class="card-header">
+        <h4><i class="fas fa-exchange-alt me-2"></i>Convertir un PDF</h4>
+    </div>
+    <div class="card-body">
+        <form method="POST" enctype="multipart/form-data" onsubmit="toggleLoading()">
+            <div class="mb-3">
+                <label for="pdf_file" class="form-label">Sélectionner un fichier PDF</label>
+                <input type="file" class="form-control" id="pdf_file" name="pdf_file" accept=".pdf" required>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-upload me-2"></i>Télécharger et convertir
+            </button>
+        </form>
+    </div>
+</div>
 {% endblock %}
