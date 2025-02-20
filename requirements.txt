@@ -1,6 +1,6 @@
 Flask==3.0.2
 python-docx==0.8.11
-black==22.3.0
+black==24.3.0
 flake8==4.0.1
 pdf2image
 setuptools
