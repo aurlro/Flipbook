@@ -1,0 +1,3 @@
+# Ignorer tout dans instance sauf ce fichier
+*
+!.gitignore

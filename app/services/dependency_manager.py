@@ -1,89 +1,104 @@
 import subprocess
 import sys
-import pkg_resources
-import os
+import importlib.metadata as metadata
 import logging
+from pathlib import Path
+from typing import List, Tuple
+
+logger = logging.getLogger(__name__)
 
 class DependencyManager:
-    @staticmethod
-    def get_required_packages():
-        """Lit les dépendances depuis requirements.txt"""
-        try:
-            requirements_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'requirements.txt')
-            if not os.path.exists(requirements_path):
-                logging.error(f"Le fichier requirements.txt n'existe pas à l'emplacement : {requirements_path}")
-                return []
-                
-            with open(requirements_path, 'r', encoding='utf-8') as f:
-                return [line.strip() for line in f if line.strip() and not line.startswith('#')]
-        except Exception as e:
-            logging.error(f"Erreur lors de la lecture de requirements.txt: {str(e)}")
-            return []
+    """Gère les dépendances de l'application"""
+    
+    REQUIRED_PACKAGES = {
+        'flask': '3.0.2',
+        'flask-wtf': '1.2.1',
+        'pillow': '11.1.0',
+        'pypdf2': '3.0.1',
+        'pymupdf': '1.23.7',
+        'python-dotenv': '1.0.1',
+        'python-magic': '0.4.27'
+    }
 
-    @staticmethod
-    def check_dependencies():
-        """Vérifie si toutes les dépendances sont installées"""
-        required = DependencyManager.get_required_packages()
-        if not required:
-            logging.warning("Aucune dépendance trouvée dans requirements.txt")
-            return [], []
-
-        installed = {pkg.key: pkg.version for pkg in pkg_resources.working_set}
+    @classmethod
+    def check_dependencies(cls) -> List[Tuple[str, str, str]]:
+        """
+        Vérifie les versions des dépendances installées
+        Retourne une liste de tuples (package, version_installée, version_requise)
+        """
+        missing_or_outdated = []
         
-        missing = []
-        outdated = []
-        
-        for req in required:
+        for package, required_version in cls.REQUIRED_PACKAGES.items():
             try:
-                if '==' in req:
-                    package_name, required_version = req.split('==')
-                    package_name = package_name.lower()
-                    if package_name not in installed:
-                        missing.append(req)
-                    elif installed[package_name] != required_version:
-                        outdated.append(req)
-                else:
-                    package_name = req.lower()
-                    if package_name not in installed:
-                        missing.append(req)
-
-            except Exception as e:
-                logging.error(f"Erreur lors de la vérification de la dépendance {req}: {str(e)}")
+                installed_version = pkg_resources.get_distribution(package).version
+                if installed_version != required_version:
+                    missing_or_outdated.append((package, installed_version, required_version))
+            except pkg_resources.DistributionNotFound:
+                missing_or_outdated.append((package, None, required_version))
         
-        return missing, outdated
+        return missing_or_outdated
 
-    @staticmethod
-    def install_dependencies():
-        """Installe les dépendances manquantes"""
-        missing, outdated = DependencyManager.check_dependencies()
-        
-        if not missing and not outdated:
-            logging.info("Toutes les dépendances sont déjà installées et à jour.")
-            return True
-
-        logging.info("Installation/Mise à jour des dépendances...")
-        
+    @classmethod
+    def install_dependencies(cls) -> bool:
+        """Installe ou met à jour les dépendances manquantes"""
         try:
-            # Mise à jour de pip
-            logging.info("Mise à jour de pip...")
-            subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--upgrade', 'pip'],
-                                stdout=subprocess.DEVNULL,
-                                stderr=subprocess.PIPE)
+            missing = cls.check_dependencies()
+            if not missing:
+                logger.info("Toutes les dépendances sont à jour")
+                return True
+
+            logger.info("Installation des dépendances manquantes...")
+            requirements_file = Path('requirements.txt')
             
-            # Installation des packages
-            packages_to_install = missing + outdated
-            if packages_to_install:
-                logging.info(f"Installation des packages: {', '.join(packages_to_install)}")
-                subprocess.check_call([sys.executable, '-m', 'pip', 'install'] + packages_to_install,
-                                    stdout=subprocess.DEVNULL,
-                                    stderr=subprocess.PIPE)
-            
-            logging.info("Installation des dépendances terminée avec succès.")
+            # Création du fichier requirements.txt temporaire
+            with open(requirements_file, 'w') as f:
+                for package, _, version in missing:
+                    f.write(f"{package}=={version}\n")
+
+            # Installation des dépendances
+            subprocess.check_call([
+                sys.executable, 
+                '-m', 
+                'pip', 
+                'install', 
+                '-r', 
+                str(requirements_file)
+            ])
+
+            logger.info("Dépendances installées avec succès")
             return True
-            
-        except subprocess.CalledProcessError as e:
-            logging.error(f"Erreur lors de l'installation des dépendances: {e.stderr.decode() if e.stderr else str(e)}")
-            return False
+
         except Exception as e:
-            logging.error(f"Erreur inattendue lors de l'installation des dépendances: {str(e)}")
+            logger.error(f"Erreur lors de l'installation des dépendances: {e}")
             return False
+
+    @classmethod
+    def get_dependency_status(cls) -> dict:
+        """Retourne l'état des dépendances"""
+        status = {
+            'total': len(cls.REQUIRED_PACKAGES),
+            'installed': 0,
+            'missing': 0,
+            'outdated': 0,
+            'details': []
+        }
+
+        for package, installed_version, required_version in cls.check_dependencies():
+            if installed_version is None:
+                status['missing'] += 1
+                state = 'missing'
+            elif installed_version != required_version:
+                status['outdated'] += 1
+                state = 'outdated'
+            else:
+                status['installed'] += 1
+                state = 'ok'
+
+            status['details'].append({
+                'package': package,
+                'installed': installed_version,
+                'required': required_version,
+                'state': state
+            })
+
+        return status
