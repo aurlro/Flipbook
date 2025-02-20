@@ -1,4 +1,5 @@
 from flask import Flask
+from config.config import Config
 import os
 
 def create_app(config_name='default'):
@@ -11,6 +12,7 @@ def create_app(config_name='default'):
     
     if config_name == 'testing':
         app.config.from_object('config.TestingConfig')
+        
         # Configuration spécifique pour les tests
         app.config.update({
             'SERVER_NAME': 'localhost',
@@ -20,6 +22,12 @@ def create_app(config_name='default'):
         })
     else:
         app.config.from_object('config.DevelopmentConfig')
+
+
+        
+    # Création sécurisée des dossiers
+    for folder in [app.config['PDF_SOURCE'], app.config['OUTPUT_FOLDER']]:
+        os.makedirs(folder, mode=0o750, exist_ok=True)
     
     # Création des dossiers seulement en mode non-test
     if not app.config.get('TESTING'):
@@ -29,7 +37,6 @@ def create_app(config_name='default'):
         os.makedirs('upload', exist_ok=True)
     
     # Enregistrement des blueprints
-    from app.routes.main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
-    
+    from app.routes.main import main_bp
+    app.register_blueprint(main_bp)
     return app

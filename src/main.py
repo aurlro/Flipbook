@@ -5,8 +5,8 @@ import os
 import sys
 
 from app.services.config_manager import load_config
-from app.services.pdf_processor import process_pdf
-from app.services.html_generator import generate_html
+from app.utils.pdf_processor import process_pdf
+from app.utils.html_generator import generate_html
 # from sharepoint_uploader import upload_to_sharepoint
 # from ui import launch_ui
 

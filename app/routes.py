@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, current_app, request
-from app.services.pdf_processor import process_pdf
-from app.services.html_generator import generate_html
+from app.utils.pdf_processor import process_pdf
+from app.utils.html_generator import generate_html
 
 bp = Blueprint('main', __name__)
 

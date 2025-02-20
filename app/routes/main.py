@@ -1,7 +1,15 @@
 import os
-from flask import Blueprint, render_template, current_app, request, flash, jsonify
-from app.services.pdf_processor import process_pdf
-from app.services.html_generator import generate_html
+from app.utils.pdf_processor import process_pdf
+from app.utils.html_generator import generate_html
+
+from flask import Blueprint, render_template, current_app, flash, redirect, url_for, request, jsonify
+from werkzeug.utils import secure_filename
+from werkzeug.security import safe_join
+from app.utils.validators import FileValidator
+from app.utils.pdf_processor import PDFProcessor
+import os
+import logging
+from functools import wrap
 
 main = Blueprint('main', __name__)
 

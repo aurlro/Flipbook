@@ -1,6 +1,6 @@
 import os
 import pytest
-from app.services.html_generator import generate_html
+from app.utils.html_generator import generate_html
 
 def test_generate_html():
     image_files = ["page1.png", "page2.png", "page3.png"]
