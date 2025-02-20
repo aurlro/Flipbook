@@ -3,10 +3,18 @@ import os
 def generate_html(image_files, title="Flipbook"):
     """
     Génère une page HTML intégrant le flipbook.
-    Utilise un template simple qui intègre le script Turn.js.
+    Utilise un template simple.
+
+    Parameters:
+    image_files (list): Liste des chemins des fichiers image à inclure dans le flipbook.
+    title (str): Le titre de la page HTML. Par défaut, "Flipbook".
+
+    Returns:
+    str: Le code HTML généré sous forme de chaîne de caractères.
     """
+    image_basenames = [os.path.basename(img) for img in image_files]
     image_elements = "\n".join(
-        [f'<img src="{os.path.basename(img)}" alt="Page {idx+1}">' for idx, img in enumerate(image_files)]
+        [f'<img src="{img}" alt="Page {idx+1}">' for idx, img in enumerate(image_basenames)]
     )
     
     # Exemple de template très simple.
@@ -22,15 +30,6 @@ def generate_html(image_files, title="Flipbook"):
         <div id="flipbook">
             {image_elements}
         </div>
-        <script src="js/turn.min.js"></script>
-        <script>
-            // Initialisation du flipbook
-            $("#flipbook").turn({{
-                width: 800,
-                height: 600,
-                autoCenter: true
-            }});
-        </script>
     </body>
     </html>
     """
