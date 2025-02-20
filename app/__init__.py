@@ -1,41 +1,17 @@
-from flask import Flask, Blueprint
-import os
+from flask import Flask, render_template
+from config.default import Config
 
-def create_app(config_name='default'):
-    app = Flask(__name__, 
-                static_folder='output',
-                static_url_path='/output')
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(config_class)
     
-    if config_name is None:
-        config_name = os.getenv('FLASK_ENV', 'development')
+    # Initialisation des blueprints
+    from app.routes.main import main_bp
+    app.register_blueprint(main_bp)
     
-    if config_name == 'testing':
-        app.config.from_object('config.TestingConfig')
-        # Configuration spécifique pour les tests
-        app.config.update({
-            'SERVER_NAME': 'localhost',
-            'TESTING': True,
-            'PDF_SOURCE': 'test_pdf_source',
-            'OUTPUT_FOLDER': 'test_output_folder'
-        })
-    else:
-        app.config.from_object('config.DevelopmentConfig')
-    
-    # Création des dossiers seulement en mode non-test
-    if not app.config.get('TESTING'):
-        os.makedirs(app.config.get('PDF_SOURCE', 'default_pdf_source'), exist_ok=True)
-        os.makedirs(app.config.get('OUTPUT_FOLDER', 'default_output_folder'), exist_ok=True)
-        os.makedirs('output', exist_ok=True)
-        os.makedirs('upload', exist_ok=True)
-    
-    # Enregistrement des blueprints
-    from .routes.main import main as main_blueprint # type: ignore
-    app.register_blueprint(main_blueprint)
-    
+    # Gestionnaire d'erreurs
+    @app.errorhandler(404)
+    def not_found_error(error):
+        return render_template('errors/404.html'), 404
+        
     return app
-
-main = Blueprint('main', __name__)
-
-@main.route('/')
-def index():
-    return "Hello, World!"
