@@ -14,10 +14,18 @@ class DependencyManager:
         'flask': '3.0.2',
         'flask-wtf': '1.2.1',
         'pillow': '11.1.0',
+        'werkzeug' :'3.1.3',
+        'pytest': '8.0.1',
+        'pytest-flask': '1.3.0',
+        'black': '22.3.0',
+        'flake8': '4.0.1',
+        'pdf2image': '1.18.5',
+        'python-docx': '0.8.11',
+        'reportlab': '4.1.0',
         'pypdf2': '3.0.1',
         'pymupdf': '1.23.7',
         'python-dotenv': '1.0.1',
-        'python-magic': '0.4.27'
+        'python-magic': '0.4.27',
     }
 
     @classmethod
