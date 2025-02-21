@@ -4,6 +4,8 @@ import logging
 import subprocess
 from typing import Dict, List, Optional, Tuple
 
+import pkg_resources
+
 logger = logging.getLogger(__name__)
 
 

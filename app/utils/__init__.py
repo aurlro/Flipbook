@@ -1,6 +1,6 @@
-from .pdf_processor import PDFProcessor
-from .html_generator import HTMLGenerator
 from .dependency_manager import DependencyManager
+from .html_generator import HTMLGenerator
+from .pdf_processor import PDFProcessor
 
 __all__ = ["PDFProcessor", "HTMLGenerator", "DependencyManager"]
 
