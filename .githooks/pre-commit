@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Vérification du formatage Python
+echo "Vérification du formatage..."
+black --check .
+
+# Vérification des imports
+echo "Vérification des imports..."
+isort --check-only .
+
+# Linting
+echo "Vérification du style..."
+flake8 .
+
+# Tests
+echo "Exécution des tests..."
+pytest
