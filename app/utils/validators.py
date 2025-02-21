@@ -5,15 +5,16 @@ from flask import current_app
 from PyPDF2 import PdfReader
 import magic  # pour la détection du type MIME
 
+
 class FileValidator:
-    ALLOWED_EXTENSIONS = {'pdf'}
+    ALLOWED_EXTENSIONS = {"pdf"}
     MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
-    MIME_TYPES = {'application/pdf'}
+    MIME_TYPES = {"application/pdf"}
 
     @staticmethod
     def is_safe_filename(filename):
         """Vérifie si le nom de fichier est sécurisé"""
-        pattern = re.compile(r'^[a-zA-Z0-9_.-]+$')
+        pattern = re.compile(r"^[a-zA-Z0-9_.-]+$")
         return bool(pattern.match(filename))
 
     @staticmethod
@@ -26,7 +27,7 @@ class FileValidator:
     @staticmethod
     def validate_pdf(file):
         """Validation complète du fichier PDF"""
-        if not file or file.filename == '':
+        if not file or file.filename == "":
             return False, "Aucun fichier fourni"
 
         if not FileValidator.is_safe_filename(file.filename):

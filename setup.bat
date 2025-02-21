@@ -1,4 +1,12 @@
 @echo off
+mkdir app\static\css
+mkdir app\static\js
+mkdir instance\uploads
+mkdir instance\output
+mkdir instance\temp
+mkdir logs
+mkdir tests
+
 setlocal enabledelayedexpansion
 
 echo === Installation de Flipbook ===

@@ -4,6 +4,7 @@ from typing import List, Union
 from werkzeug.utils import secure_filename
 import shutil
 
+
 def clean_directory(directory: Union[str, Path], max_age: int = 86400) -> List[Path]:
     """
     Nettoie les fichiers plus vieux que max_age secondes
@@ -11,7 +12,7 @@ def clean_directory(directory: Union[str, Path], max_age: int = 86400) -> List[P
     """
     directory = Path(directory)
     deleted_files = []
-    
+
     if not directory.exists():
         return deleted_files
 
@@ -28,9 +29,11 @@ def clean_directory(directory: Union[str, Path], max_age: int = 86400) -> List[P
 
     return deleted_files
 
+
 def get_safe_filename(filename: str) -> str:
     """Retourne un nom de fichier sécurisé"""
     return secure_filename(filename)
+
 
 def ensure_directory(directory: Union[str, Path]) -> Path:
     """Crée un répertoire s'il n'existe pas et retourne son Path"""

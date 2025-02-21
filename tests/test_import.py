@@ -2,6 +2,7 @@ import sys
 import os
 import unittest
 
+
 class TestEnvironment(unittest.TestCase):
 
     def test_current_working_directory(self):
@@ -16,14 +17,14 @@ class TestEnvironment(unittest.TestCase):
         self.assertGreater(len(python_path), 0, "Python path is empty")
 
     def test_list_directory_contents(self):
-        contents = os.listdir('.')
+        contents = os.listdir(".")
         print("\nTrying to list directory contents:")
         print(contents)
         self.assertIsInstance(contents, list, "Directory contents is not a list")
         self.assertGreater(len(contents), 0, "Directory contents is empty")
 
     def test_list_app_directory_contents(self):
-        app_dir = './app'
+        app_dir = "./app"
         self.assertTrue(os.path.isdir(app_dir), "App directory does not exist")
         contents = os.listdir(app_dir)
         print("\nTrying to list app directory contents:")
@@ -31,5 +32,6 @@ class TestEnvironment(unittest.TestCase):
         self.assertIsInstance(contents, list, "App directory contents is not a list")
         self.assertGreater(len(contents), 0, "App directory contents is empty")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

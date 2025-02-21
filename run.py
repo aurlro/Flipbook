@@ -81,7 +81,7 @@ def setup():
         
         # Import des dépendances après leur installation
         from app import create_app
-        from app.services.dependency_manager import DependencyManager
+        from app.utils.dependency_manager import DependencyManager
         from config.config import config
         
         # Vérification de l'environnement
@@ -110,23 +110,44 @@ def get_server_config():
         'debug': env == 'development',
         'ssl_context': 'adhoc' if env == 'production' else None
     }
+    
+# Après la création de l'application dans la fonction main
+
+def verify_app_startup(app):
+    """Vérifie le démarrage correct de l'application"""
+    try:
+        with app.app_context():
+            # Vérification des services
+            from app.services import PDFProcessor, HTMLGenerator
+            if not PDFProcessor or not HTMLGenerator:
+                raise ImportError("Services non chargés correctement")
+            
+            # Test de la configuration
+            if not app.config:
+                raise ValueError("Configuration non chargée")
+                
+            return True
+    except Exception as e:
+        logging.error(f"Erreur lors de la vérification du démarrage: {str(e)}")
+        return False
 
 if __name__ == '__main__':
     try:
         if not setup():
             sys.exit(1)
         
-        # Import des modules nécessaires après la configuration
         from app import create_app
         from config.config import config
         
         env = os.getenv('FLASK_ENV', 'production')
-        app = create_app(config[env])
+        app = create_app(env)
+        
+        # Vérification du démarrage
+        if not verify_app_startup(app):
+            logging.error("Échec de la vérification du démarrage")
+            sys.exit(1)
+            
         server_config = get_server_config()
-        
-        if env == 'production':
-            server_config['debug'] = False
-        
         app.run(**server_config)
         
     except Exception as e:

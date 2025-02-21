@@ -28,6 +28,7 @@ var/
 .installed.cfg
 *.egg
 .env
+wheels/
 
 # Virtual Environment
 venv/
@@ -48,3 +49,12 @@ config.py
 # Système
 .DS_Store
 Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Project specific
+instance/
