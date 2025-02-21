@@ -1,15 +1,29 @@
-import sys
-import os
-import unittest
+def test_imports():
+    imports = {
+        'Flask': 'flask',
+        'Flask-WTF': 'flask_wtf',
+        'Pillow': 'PIL',
+        'PyPDF2': 'PyPDF2',
+        'python-dotenv': 'dotenv',
+        'pytest': 'pytest'
+    }
 
+<<<<<<< HEAD
 
 class TestEnvironment(unittest.TestCase):
+=======
+    results = []
+    for name, module in imports.items():
+        try:
+            __import__(module)
+            results.append(f"✅ {name} importé avec succès")
+        except ImportError as e:
+            results.append(f"❌ {name} NON importé : {str(e)}")
+>>>>>>> ba066e810d1d85ad7cf37c29561aa5b4baee6d02
 
-    def test_current_working_directory(self):
-        cwd = os.getcwd()
-        print(f"Current working directory: {cwd}")
-        self.assertTrue(os.path.isdir(cwd), "Current working directory does not exist")
+    return results
 
+<<<<<<< HEAD
     def test_python_path(self):
         python_path = sys.path
         print(f"Python path: {python_path}")
@@ -35,3 +49,9 @@ class TestEnvironment(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+=======
+if __name__ == "__main__":
+    print("Test des imports:")
+    for result in test_imports():
+        print(result)
+>>>>>>> ba066e810d1d85ad7cf37c29561aa5b4baee6d02

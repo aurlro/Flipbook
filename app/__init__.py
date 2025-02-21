@@ -1,23 +1,40 @@
-from flask import Flask
-from config.config import config  # Importation du dictionnaire de configuration
+"""Module d'initialisation de l'application Flask."""
+
 import os
+from flask import Flask
 from pathlib import Path
 
+def create_app(config_class=None):
+    """
+    Crée et configure l'application Flask.
+    
+    Args:
+        config_class: Classe de configuration à utiliser
 
-def create_app(config_name="default"):
-    """Crée et configure l'instance de l'application Flask"""
-
+    Returns:
+        L'application Flask configurée
+    """
     app = Flask(__name__)
 
-    # Utilisation correcte de la configuration
-    app.config.from_object(config[config_name])
+    # Configuration
+    if config_class:
+        app.config.from_object(config_class)
+    else:
+        # Configuration par défaut
+        app.config.update(
+            SECRET_KEY=os.getenv('SECRET_KEY', 'dev'),
+            UPLOAD_FOLDER=os.getenv('UPLOAD_FOLDER', 'instance/uploads'),
+            OUTPUT_FOLDER=os.getenv('OUTPUT_FOLDER', 'instance/output'),
+            MAX_CONTENT_LENGTH=16 * 1024 * 1024,  # 16MB max-limit
+            QUALITY=int(os.getenv('QUALITY', '75'))
+        )
 
-    # Initialisation de la configuration
-    config[config_name].init_app(app)
+    # Création des dossiers nécessaires
+    Path(app.config['UPLOAD_FOLDER']).mkdir(parents=True, exist_ok=True)
+    Path(app.config['OUTPUT_FOLDER']).mkdir(parents=True, exist_ok=True)
 
     # Enregistrement des blueprints
-    from app.routes import main_bp
-
+    from app.routes.main import main_bp
     app.register_blueprint(main_bp)
 
     return app

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import sys
 import os
 import logging
@@ -153,3 +154,11 @@ if __name__ == '__main__':
     except Exception as e:
         logging.error(f"Erreur fatale lors du démarrage: {str(e)}")
         sys.exit(1)
+=======
+from app import create_app
+
+app = create_app()
+
+if __name__ == '__main__':
+    app.run(debug=True)
+>>>>>>> ba066e810d1d85ad7cf37c29561aa5b4baee6d02

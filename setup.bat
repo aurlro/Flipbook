@@ -1,4 +1,5 @@
 @echo off
+<<<<<<< HEAD
 mkdir app\static\css
 mkdir app\static\js
 mkdir instance\uploads
@@ -61,4 +62,20 @@ if errorlevel 1 (
 echo.
 echo Installation terminée avec succès !
 echo Pour lancer l'application, utilisez run.bat
+=======
+echo Création de l'environnement virtuel...
+python -m venv venv
+
+echo Activation de l'environnement virtuel...
+call venv\Scripts\activate.bat
+
+echo Installation des dépendances...
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+echo Vérification des installations...
+python -c "import flask; print('Flask version:', flask.__version__)"
+python -c "import flask_wtf; print('Flask-WTF installé avec succès')"
+
+echo Installation terminée !
+>>>>>>> ba066e810d1d85ad7cf37c29561aa5b4baee6d02
 pause

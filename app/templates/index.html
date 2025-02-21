@@ -2,20 +2,30 @@
 
 {% block content %}
 <div class="container">
-    <div class="text-center">
-        <h1>Bienvenue sur Flipbook Generator</h1>
-        <p>Utilisez la navigation ci-dessus pour configurer l'application, convertir des PDF, consulter l'historique et les logs.</p>
-    </div>
+    <h1>Convertisseur PDF en Flipbook</h1>
     
-    <div id="upload-section">
-        <form id="pdf-upload-form">
-            <input type="file" id="pdf-file" accept=".pdf">
-            <button type="submit">Generate Flipbook</button>
-        </form>
-    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     
-    <div id="flipbook-container">
-        <!-- Le flipbook sera chargé ici -->
-    </div>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.pdf_file.label }}
+            {{ form.pdf_file(class="form-control") }}
+            {% if form.pdf_file.errors %}
+                {% for error in form.pdf_file.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {{ form.submit(class="btn btn-primary mt-3") }}
+    </form>
 </div>
 {% endblock %}

@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Union
 
-import fitz
+import fitz  # PyMuPDF
 
 logger = logging.getLogger(__name__)
 
@@ -26,9 +26,7 @@ class PDFProcessor:
         self.output_folder = Path(config.get("OUTPUT_FOLDER", "instance/output"))
         self.dpi = int(self.quality * 1.5)
 
-    def process_pdf(
-        self, pdf_path: Union[str, Path]
-    ) -> Dict[str, Union[str, int, List[str]]]:
+    def process_pdf(self, pdf_path: Union[str, Path]) -> Dict[str, Union[str, int, List[str]]]:
         """
         Traite le PDF et retourne les informations de conversion.
 
@@ -41,9 +39,6 @@ class PDFProcessor:
                 - output_dir: Dossier de sortie des images
                 - image_count: Nombre d'images générées
                 - images: Liste des chemins des images
-
-        Raises:
-            Exception: Si une erreur survient pendant la conversion
         """
         try:
             # Créer un dossier unique pour cette conversion
@@ -86,7 +81,9 @@ class PDFProcessor:
         try:
             for page_num in range(len(doc)):
                 page = doc[page_num]
-                pix = page.get_pixmap(matrix=fitz.Matrix(self.dpi / 72, self.dpi / 72))
+                pix = page.get_pixmap(
+                    matrix=fitz.Matrix(self.dpi / 72, self.dpi / 72)
+                )
 
                 image_path = output_dir / f"page_{page_num + 1}.png"
                 pix.save(str(image_path))
