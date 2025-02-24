@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Flipbook PDF</title>
+    <style>
+        .flipbook-container {
+            perspective: 1500px;
+            width: 800px;
+            height: 600px;
+            margin: 2rem auto;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            transform-origin: left center;
+        }
+
+        .page-front, .page-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .page-back {
+            transform: rotateY(180deg);
+        }
+
+        .page-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="flipbook-container">
+        <div class="page" id="page1">
+            <div class="page-front">
+                <img src="page1.jpg" class="page-img" alt="Page 1">
+            </div>
+            <div class="page-back">
+                <img src="page2.jpg" class="page-img" alt="Page 2">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isFlipped = false;
+        const pageElement = document.getElementById('page1');
+        
+        document.addEventListener('click', () => {
+            const degree = isFlipped ? 0 : -180;
+            pageElement.style.transform = `rotateY(${degree}deg)`;
+            isFlipped = !isFlipped;
+        });
+    </script>
+</body>
+</html>
