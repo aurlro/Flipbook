@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flipbook{% endblock %}</title>
+    <style>
+        .flipbook-container {
+            margin: 20px auto;
+            position: relative;
+            perspective: 2500px;
+            transform-style: preserve-3d;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-origin: left center;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .page-front, .page-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .page-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .upload-section {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            max-width: 600px;
+        }
+
+        .error-message {
+            background-color: #fee;
+            border: 1px solid #faa;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 4px;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/flipbook.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

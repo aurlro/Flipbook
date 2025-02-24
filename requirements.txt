@@ -1,0 +1,32 @@
+# Web Framework
+Flask==3.0.0
+Werkzeug==3.0.1
+
+# Intégation de PDF
+pdf2image==1.16.0
+PyPDF2==3.0.0
+
+# Formatting and Linting
+black==23.12.1
+flake8==7.0.0
+isort==5.13.2
+
+# Testing
+pytest==7.4.4
+pytest-cov==4.1.0  # Pour la couverture des tests
+pytest-flask==1.3.0
+reportlab==4.1.0
+
+
+# Development Tools
+pre-commit==3.6.0  # Pour gérer les hooks git
+
+# Additional Dependencies
+Pillow==11.1.0  # Pour la manipulation d'images
+requests==2.31.0  # Pour les requêtes HTTP si nécessaire
+
+# Type Checking
+mypy==1.8.0  # Pour la vérification des types statiques
+
+# Documentation
+sphinx==7.2.6  # Pour générer la documentation

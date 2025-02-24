@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Si le message de commit n'est pas déjà défini (pas un merge, amend, etc.)
+if [ -z "$2" ]; then
+    # Ajouter le template de message de commit
+    echo "# 🎯 type: description courte (50 chars max)
+
+# 📝 Description plus détaillée si nécessaire (72 chars par ligne)
+# │
+# │
+# └─> Pourquoi ce changement est nécessaire ?
+#     Comment cela résout le problème ?
+#     Y a-t-il des effets de bord ?
+
+# 🔍 Références (tickets, PRs, etc)
+# Fixes #
+# Related to #
+" > "$1"
+fi
