@@ -92,18 +92,18 @@
     <h1>Flipbook - PDF & Images</h1>
     <div class="file-input-wrapper">
         <form id="upload-form">
-            <input type="file" id="file-input" 
+            <input type="file" id="file-input"
                    accept=".pdf,.jpg,.jpeg,.png,.gif" multiple>
             <button type="submit">Télécharger</button>
         </form>
     </div>
-    
+
     <div class="upload-progress" id="upload-progress">
         <p>Traitement en cours...</p>
         <p id="current-file"></p>
         <progress class="progress-bar" id="progress-bar" value="0" max="100"></progress>
     </div>
-    
+
     <div id="status-messages"></div>
 </div>
 
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const currentFile = document.getElementById('current-file');
     const statusMessages = document.getElementById('status-messages');
     const loadingOverlay = document.getElementById('loading-overlay');
-    
+
     function showMessage(message, type = 'success') {
         const messageDiv = document.createElement('div');
         messageDiv.className = `status-message ${type}`;
@@ -150,14 +150,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const response = await fetch('/api/pages');
             const data = await response.json();
-            
+
             if (data.success && data.pages.length > 0) {
                 document.getElementById('initial-message').style.display = 'none';
                 flipbook.state.pages = data.pages.map(page => ({
                     src: page.url,
                     loaded: false
                 }));
-                
+
                 await flipbook.preloadImages(flipbook.state.pages.map(p => p.src));
                 flipbook.container.appendChild(flipbook.createPage(0));
             }
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         uploadProgress.style.display = 'block';
         loadingOverlay.style.display = 'flex';
-        
+
         try {
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];

@@ -1,7 +1,6 @@
 from pathlib import Path
 
-from flask import (Blueprint, current_app, jsonify, render_template, request,
-                   url_for)
+from flask import Blueprint, current_app, jsonify, render_template, request, url_for
 
 from .file_handler import FileHandler
 

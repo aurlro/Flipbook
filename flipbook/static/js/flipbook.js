@@ -50,7 +50,7 @@ class Flipbook {
 
         // Initialisation de l'ErrorBoundary
         this.errorBoundary = null;
-        
+
         this.init();
     }
 
@@ -132,7 +132,7 @@ class Flipbook {
         try {
             const page = document.createElement('div');
             page.className = `page ${isBack ? 'back' : ''}`;
-            
+
             const frontDiv = document.createElement('div');
             frontDiv.className = 'page-front';
             const backDiv = document.createElement('div');
@@ -165,7 +165,7 @@ class Flipbook {
     handleNavigation(direction) {
         try {
             if (this.state.isAnimating) return;
-            
+
             if (direction === 'next') {
                 this.flipPage();
             } else if (direction === 'prev') {
@@ -181,7 +181,7 @@ class Flipbook {
      */
     flipPage() {
         try {
-            if (this.state.currentPage >= this.state.pages.length - 1 || 
+            if (this.state.currentPage >= this.state.pages.length - 1 ||
                 this.state.isAnimating) {
                 return;
             }
@@ -189,12 +189,12 @@ class Flipbook {
             this.state.isAnimating = true;
             const newPage = this.createPage(this.state.currentPage + 1, true);
             this.container.appendChild(newPage);
-            
+
             requestAnimationFrame(() => {
                 newPage.style.transform = 'rotateY(-180deg)';
                 this.state.currentPage++;
                 this.lazyLoadImages(this.state.currentPage + 1);
-                
+
                 setTimeout(() => {
                     this.state.isAnimating = false;
                 }, this.config.duration);
@@ -217,7 +217,7 @@ class Flipbook {
             this.state.isAnimating = true;
             const pages = this.container.querySelectorAll('.page');
             const lastPage = pages[pages.length - 1];
-            
+
             lastPage.style.transform = 'rotateY(0deg)';
             setTimeout(() => {
                 this.container.removeChild(lastPage);
@@ -242,21 +242,21 @@ class Flipbook {
                 case e.type === 'click':
                     this.handleNavigation('next');
                     break;
-                    
+
                 case e.type === 'keydown' && e.key === 'ArrowRight':
                     this.handleNavigation('next');
                     break;
-                    
+
                 case e.type === 'keydown' && e.key === 'ArrowLeft':
                     this.handleNavigation('prev');
                     break;
-                    
+
                 case e.type === 'touchstart':
                     this.state.touchStartX = e.changedTouches[0].screenX;
                     break;
 
                 case e.type === 'touchend':
-                    const deltaX = e.changedTouches[0].screenX - 
+                    const deltaX = e.changedTouches[0].screenX -
                                  this.state.touchStartX;
                     if (Math.abs(deltaX) > 50) {
                         this.handleNavigation(deltaX > 0 ? 'prev' : 'next');
