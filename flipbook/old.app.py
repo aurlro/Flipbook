@@ -7,7 +7,9 @@ from .core import FlipbookRenderer
 # Créez l'application Flask avec le bon template_folder
 template_dir = Path(__file__).resolve().parent / "templates"
 static_dir = Path(__file__).resolve().parent / "static"
-app = Flask(__name__, template_folder=str(template_dir), static_folder=str(static_dir))
+app = Flask(
+    __name__, template_folder=str(template_dir), static_folder=str(static_dir)
+)
 
 renderer = FlipbookRenderer()
 
@@ -23,7 +25,8 @@ def allowed_file(filename: str) -> bool:
     """Vérifie si l'extension du fichier est autorisée."""
     return (
         "." in filename
-        and filename.rsplit(".", 1)[1].lower() in app.config["ALLOWED_EXTENSIONS"]
+        and filename.rsplit(".", 1)[1].lower()
+        in app.config["ALLOWED_EXTENSIONS"]
     )
 
 
@@ -52,7 +55,11 @@ def upload_file():
         result = renderer.load_page(str(save_path))
         if result.success:
             return jsonify(
-                {"success": True, "filename": filename.name, "path": str(save_path)}
+                {
+                    "success": True,
+                    "filename": filename.name,
+                    "path": str(save_path),
+                }
             )
         return jsonify({"error": result.error}), 400
 

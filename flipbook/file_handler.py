@@ -65,4 +65,7 @@ class FileHandler:
                 }
 
         except Exception as e:
-            return {"success": False, "error": f"Erreur lors du traitement: {str(e)}"}
+            return {
+                "success": False,
+                "error": f"Erreur lors du traitement: {str(e)}",
+            }

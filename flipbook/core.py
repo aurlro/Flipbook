@@ -32,7 +32,8 @@ class FlipbookRenderer:
             # Vérifier si le fichier existe
             if not Path(image_path).exists():
                 return RenderResult(
-                    success=False, error=f"Le fichier {image_path} n'existe pas"
+                    success=False,
+                    error=f"Le fichier {image_path} n'existe pas",
                 )
 
             # TODO: Ajouter la logique de chargement d'image
@@ -56,7 +57,9 @@ class FlipbookRenderer:
         Returns:
             TransitionEffect: Objet contenant les paramètres.
         """
-        return TransitionEffect(from_page=from_page, to_page=to_page, duration=duration)
+        return TransitionEffect(
+            from_page=from_page, to_page=to_page, duration=duration
+        )
 
 
 @dataclass

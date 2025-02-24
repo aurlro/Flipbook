@@ -50,7 +50,11 @@ class PDFHandler:
                 temp_path.rename(dest_path)
                 image_paths.append(dest_path)
 
-            return {"success": True, "num_pages": num_pages, "image_paths": image_paths}
+            return {
+                "success": True,
+                "num_pages": num_pages,
+                "image_paths": image_paths,
+            }
 
         except Exception as e:
             return {"success": False, "error": str(e)}
