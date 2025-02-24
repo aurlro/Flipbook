@@ -1,8 +1,9 @@
-import os
+import shutil
+import time
 from pathlib import Path
 from typing import List, Union
+
 from werkzeug.utils import secure_filename
-import shutil
 
 
 def clean_directory(directory: Union[str, Path], max_age: int = 86400) -> List[Path]:

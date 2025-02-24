@@ -1,5 +1,4 @@
 from pathlib import Path
-from config.config import config
 
 
 def init_directories(app_config):
