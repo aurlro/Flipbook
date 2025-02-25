@@ -54,7 +54,7 @@
     <script>
         let isFlipped = false;
         const pageElement = document.getElementById('page1');
-        
+
         document.addEventListener('click', () => {
             const degree = isFlipped ? 0 : -180;
             pageElement.style.transform = `rotateY(${degree}deg)`;

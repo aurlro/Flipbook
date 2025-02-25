@@ -1,0 +1,12 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Python files
+*.py text diff=python
+
+# Configuration files
+*.toml text
+*.json text
+
+# Requirements files
+requirements*.txt text
